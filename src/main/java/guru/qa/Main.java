@@ -1,6 +1,7 @@
 package guru.qa;
 
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class Main {
@@ -50,12 +51,24 @@ public class Main {
         hashMapDemo.addElement(2, "Value 2");
         System.out.println("Поиск: " + hashMapDemo.searchElement(1));
         hashMapDemo.removeElement(1);
-        for (int key : hashMapDemo.getHashMap().keySet()) {
-            String value = hashMapDemo.getHashMap().get(key);
-            System.out.println("Key: " + key + ", Value: " + value);
-        }
+        HashMap<Integer, String> hashMap = hashMapDemo.getHashMap();
+        hashMap.forEach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
 
 
         System.out.println("_____________________");
+
+        QueueDemo queueDemo = new QueueDemo();
+        queueDemo.enqueue("Элемент 1");
+        queueDemo.enqueue("Элемент 2");
+        queueDemo.enqueue("Элемент 3");
+        queueDemo.enqueue("Элемент 4");
+
+        do {
+            String element = queueDemo.dequeue();
+            System.out.println("Вывод элемента: " + element);
+        } while (!queueDemo.isEmpty());
+
+        System.out.println("_____________________");
+
     }
 }
